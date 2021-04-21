@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.8/brython.js"
+        integrity="sha256-rA89wPrTJJQFWJaZveKW8jpdmC3t5F9rRkPyBjz8G04=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.8/brython_stdlib.js"
+        integrity="sha256-Gnrw9tIjrsXcZSCh/wos5Jrpn0bNVNFJuNJI9d71TDs=" crossorigin="anonymous"></script>
+
+    <title>Random Thoughts</title>
+</head>
+
+<body onload="brython()">
+    <script type="text/python">
+        import json
+        from browser import document, ajax
+
+        def on_complete(req):
+            data = json.loads(req.responseText)
+            thought = data['content']
+            document['result'].text = thought
+
+        def get_thought(e):
+            req = ajax.ajax()
+            url = 'https://api.quotable.io/random'
+            req.open('GET', url, True)
+            req.bind('complete', on_complete)
+            document['result'].text = 'Loading...'
+            req.send()
+
+        document['mybutton'].bind('click', get_thought)
+        </script>
+
+        <button id="mybutton">Click here to get a random thought!</button>
+        <div id="result" class="card"></div>
+
+</body>
+
+</html>
