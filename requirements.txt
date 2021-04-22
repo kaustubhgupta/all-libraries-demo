@@ -1,0 +1,13 @@
+pywebio==1.2.3
+colabcode==0.2.0
+dearpygui==0.6.403
+explainerdashboard==0.2.18.1
+Flask==1.1.2
+voila==0.2.6
+Kivy==1.11.1
+kivy-deps.angle==0.2.0
+kivy-deps.glew==0.2.0
+kivy-deps.gstreamer==0.2.0
+kivy-deps.sdl2==0.2.0
+Kivy-Garden==0.1.4
+kivymd==0.104.1
